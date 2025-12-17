@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 83% 53%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 280 83% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 280 83% 53%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 0 85% 45%;
+
+    --chart-1: 0 85% 45%;
+    --chart-2: 43 99% 53%;
+    --chart-3: 142 76% 36%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 84% 60%;
+  }
+
+  .dark {
+    --background: 220 16% 8%;
+    --foreground: 220 10% 94%;
+
+    --card: 220 16% 11%;
+    --card-foreground: 220 10% 94%;
+
+    --popover: 220 16% 11%;
+    --popover-foreground: 220 10% 94%;
+
+    --primary: 0 85% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 43 99% 60%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 220 16% 14%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 43 99% 60%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 220 16% 18%;
+    --input: 220 16% 18%;
+    --ring: 0 85% 52%;
+
+    --sidebar-background: 220 16% 6%;
+    --sidebar-foreground: 220 10% 94%;
+    --sidebar-primary: 0 85% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 43 99% 60%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 16% 14%;
+    --sidebar-ring: 0 85% 52%;
+
+    --chart-1: 0 85% 52%;
+    --chart-2: 43 99% 60%;
+    --chart-3: 142 70% 45%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 62% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+}
+
+/* MARVEL ANIMATIONS */
+@keyframes marvelPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(196, 30, 58, 0.5), 0 0 20px rgba(196, 30, 58, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(196, 30, 58, 0.8), 0 0 40px rgba(253, 185, 19, 0.4);
+  }
+}
+
+@keyframes marvelGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(196, 30, 58, 0.5), 0 0 20px rgba(253, 185, 19, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(196, 30, 58, 0.8), 0 0 30px rgba(253, 185, 19, 0.6);
+  }
+}
+
+@keyframes shieldFlip {
+  0% {
+    transform: rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotateY(360deg) scale(1);
+  }
+}
+
+@keyframes ironManBoot {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes arcReactor {
+  0% {
+    background: radial-gradient(circle, rgba(253, 185, 19, 0.8), rgba(196, 30, 58, 0.3));
+    box-shadow: 0 0 10px rgba(253, 185, 19, 0.6), inset 0 0 10px rgba(253, 185, 19, 0.4);
+  }
+  50% {
+    background: radial-gradient(circle, rgba(253, 185, 19, 1), rgba(196, 30, 58, 0.5));
+    box-shadow: 0 0 20px rgba(253, 185, 19, 0.9), inset 0 0 15px rgba(253, 185, 19, 0.6);
+  }
+  100% {
+    background: radial-gradient(circle, rgba(253, 185, 19, 0.8), rgba(196, 30, 58, 0.3));
+    box-shadow: 0 0 10px rgba(253, 185, 19, 0.6), inset 0 0 10px rgba(253, 185, 19, 0.4);
+  }
+}
+
+@keyframes captainShield {
+  0%, 100% {
+    transform: rotate(0deg);
+    filter: drop-shadow(0 0 0px rgba(196, 30, 58, 0.5));
+  }
+  50% {
+    transform: rotate(360deg);
+    filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.7));
+  }
+}
+
+@keyframes thorHammer {
+  0%, 100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  50% {
+    transform: rotate(45deg) translateY(-10px);
+  }
+}
+
+@keyframes blackWidowStrike {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleX(1.1);
+  }
+}
+
+@keyframes hawkeyeAim {
+  0% {
+    box-shadow: inset 0 0 0px rgba(253, 185, 19, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 20px rgba(253, 185, 19, 0.6);
+  }
+  100% {
+    box-shadow: inset 0 0 0px rgba(253, 185, 19, 0);
+  }
+}
+
+@keyframes hulkSmash {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spiderweb {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Marvel Theme Classes */
+.marvel-button {
+  position: relative;
+  background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+  color: #FDB913;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 2px solid #FDB913;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 5px 15px rgba(196, 30, 58, 0.4), 0 0 0 0 rgba(253, 185, 19, 0.4);
+}
+
+.marvel-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(196, 30, 58, 0.6), 0 0 20px rgba(253, 185, 19, 0.6);
+  animation: marvelPulse 0.6s ease-in-out;
+}
+
+.marvel-button:active {
+  transform: translateY(-1px);
+  filter: brightness(1.2);
+}
+
+.marvel-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.8), rgba(40, 20, 60, 0.6));
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #C41E3A, #FDB913) 1;
+  overflow: hidden;
+  animation: ironManBoot 0.6s ease-out;
+}
+
+.marvel-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 30%, rgba(253, 185, 19, 0.1) 50%, transparent 70%);
+  transform: rotate(45deg);
+  animation: captainShield 3s linear infinite;
+}
+
+.marvel-card:hover {
+  border-image: linear-gradient(135deg, #FDB913, #C41E3A) 1;
+  box-shadow: 0 0 30px rgba(196, 30, 58, 0.5), 0 0 60px rgba(253, 185, 19, 0.3);
+}
+
+.marvel-title {
+  animation: marvelGlow 2s ease-in-out infinite;
+  background: linear-gradient(135deg, #FDB913, #FF6B6B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.marvel-badge {
+  position: relative;
+  background: conic-gradient(from 0deg, #C41E3A, #FDB913, #C41E3A);
+  animation: arcReactor 2s ease-in-out infinite;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+}
+
+.marvel-stat {
+  position: relative;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(253, 185, 19, 0.1));
+  border-left: 4px solid #FDB913;
+  padding-left: 12px;
+  animation: hawkeyeAim 3s ease-in-out infinite;
+}
+
+.marvel-divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C41E3A, #FDB913, #C41E3A, transparent);
+  margin: 20px 0;
+}
+
+.marvel-hover-lift:hover {
+  transform: translateY(-8px);
+  animation: ironManBoot 0.4s ease-out;
+}
+
+.marvel-glow {
+  animation: marvelPulse 1.5s ease-in-out infinite;
+}
+
+.marvel-icon {
+  animation: thorHammer 1s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .marvel-button {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+
