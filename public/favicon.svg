@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C41E3A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDB913;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100" height="100" fill="#0f1419" rx="20"/>
+  
+  <!-- Red gradient circle background -->
+  <circle cx="50" cy="50" r="40" fill="url(#grad1)" opacity="0.9"/>
+  
+  <!-- Gold checkmark -->
+  <g transform="translate(50, 50)">
+    <!-- Checkmark mark -->
+    <path d="M -15 0 L -5 10 L 15 -10" stroke="url(#grad2)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Upward arrow accent -->
+    <path d="M 0 -20 L 0 -5" stroke="url(#grad2)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M -5 -12 L 0 -5 L 5 -12" stroke="url(#grad2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Glow effect -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="url(#grad2)" stroke-width="1" opacity="0.5" filter="url(#glow)"/>
+  
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+  </filter>
+</svg>
