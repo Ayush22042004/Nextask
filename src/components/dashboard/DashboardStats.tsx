@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Task } from "@/types/database";
 import {
   CheckCircle2,
@@ -21,7 +20,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import { format, subDays, startOfDay, isAfter, isBefore } from "date-fns";
+import { format, subDays, startOfDay } from "date-fns";
 
 interface DashboardStatsProps {
   tasks: Task[];
@@ -100,17 +99,13 @@ export function DashboardStats({ tasks }: DashboardStatsProps) {
           </div>
         </div>
 
-        <div className={`marvel-card p-4 border-l-4 ${stats.overdue > 0 ? "border-l-red-600 animate-pulse" : "border-l-gray-500"}`}>
+        <div className="marvel-card p-4 border-l-4 border-l-gray-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className={`text-xs font-bold uppercase tracking-wider ${stats.overdue > 0 ? "text-red-400" : "text-gray-400"}`}>
-                {stats.overdue > 0 ? "🚨 CRITICAL" : "✅ STATUS"}
-              </p>
-              <p className={`text-3xl font-black mt-1 ${stats.overdue > 0 ? "text-red-400" : "text-green-400"}`}>
-                {stats.overdue}
-              </p>
+              <p className="text-xs font-bold uppercase tracking-wider text-gray-400">STATUS</p>
+              <p className="text-3xl font-black mt-1 text-green-400">{stats.overdue}</p>
             </div>
-            <AlertTriangle className={`h-8 w-8 ${stats.overdue > 0 ? "text-red-400/70 animate-spin" : "text-gray-400/70"}`} />
+            <AlertTriangle className="h-8 w-8 text-gray-400/70" />
           </div>
         </div>
       </div>
@@ -121,7 +116,7 @@ export function DashboardStats({ tasks }: DashboardStatsProps) {
           <div className="pb-4 border-b border-yellow-500/30">
             <h3 className="marvel-title font-bold flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-yellow-400" />
-              📊 WEEKLY COMBAT REPORT
+              WEEKLY COMBAT REPORT
             </h3>
           </div>
           <div className="h-[200px] pt-4">
@@ -170,52 +165,52 @@ export function DashboardStats({ tasks }: DashboardStatsProps) {
           <div className="pb-4 border-b border-yellow-500/30">
             <h3 className="marvel-title font-bold flex items-center gap-2">
               <Target className="h-4 w-4 text-yellow-400" />
-              🎯 TEAM ROSTER
+              TEAM ROSTER
             </h3>
           </div>
           <div className="h-[200px] flex items-center justify-center pt-4">
             {pieData.length > 0 ? (
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={pieData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={50}
-                      outerRadius={80}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {pieData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: "rgba(20, 20, 40, 0.95)",
-                        borderColor: "#C41E3A",
-                        borderRadius: "8px",
-                        border: "2px solid #FDB913",
-                      }}
-                      labelStyle={{ color: "#FDB913" }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              ) : (
-                <p className="text-yellow-400/50 text-sm font-bold">⚡ Awaiting deployment</p>
-              )}
-            </div>
-            <div className="flex justify-center gap-4 mt-4 flex-wrap">
-              {pieData.map((entry) => (
-                <div key={entry.name} className="flex items-center gap-2 text-xs text-yellow-300 font-bold">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: entry.color }}
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={pieData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={50}
+                    outerRadius={80}
+                    paddingAngle={5}
+                    dataKey="value"
+                  >
+                    {pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "rgba(20, 20, 40, 0.95)",
+                      borderColor: "#C41E3A",
+                      borderRadius: "8px",
+                      border: "2px solid #FDB913",
+                    }}
+                    labelStyle={{ color: "#FDB913" }}
                   />
-                  {entry.name}
-                </div>
-              ))}
-            </div>
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-yellow-400/50 text-sm font-bold">Awaiting deployment</p>
+            )}
+          </div>
+          <div className="flex justify-center gap-4 mt-4 flex-wrap">
+            {pieData.map((entry) => (
+              <div key={entry.name} className="flex items-center gap-2 text-xs text-yellow-300 font-bold">
+                <div
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: entry.color }}
+                />
+                {entry.name}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
